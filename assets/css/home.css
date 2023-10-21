@@ -1,0 +1,38 @@
+#home-container {
+  display: flex;
+}
+
+#home-container #feed-post {
+  width: 70%;
+  padding: 2rem;
+}
+
+#home-container #user-friends {
+  width: 30%;
+  border-left: 2px solid lightgray;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#home-container #user-friends a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+#home-container #user-friends .button {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: .5rem;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+#home-container #user-friends .button:hover {
+  color: red;
+}
+
+#home-container #user-friends #user h1 {
+  color: black;
+}

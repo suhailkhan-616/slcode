@@ -1,3 +1,20 @@
-<header>
-    <h1>Header</h1>
-</header>
+<header id="header">
+    <h1 class="h1">SLCODE</h1>
+    <ul>
+        <div id="header-login">
+        <% if(locals.user){%>
+            <img src="<%=user.avatar%>" alt="<%=user.name%>" width="40" height="30">
+            <li class="">
+                <a href="/users/profile">
+                    <%=user.name%>
+                </a>
+            </li>
+            <li><a href="/users/sign-out">Sign Out</a></li>
+            
+            <%}else{%>
+                <li><a href="/users/sign-in">Sign In</a></li>
+                <li><a href="/users/sign-up">Sign Up</a></li>
+                <%}%>
+            </ul>
+        </div>
+        </header>

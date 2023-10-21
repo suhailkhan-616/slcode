@@ -1,0 +1,22 @@
+#footer{
+    // border: 2px solid black;
+    display: flex;
+    // color: white;
+    font-size: 1rem;
+    height: 50%;
+    background-color: wheat;
+    #footer-div{
+        display: flex;
+        align-items:center ;
+    }
+    .h1{
+        margin-left:1rem;
+    }
+    li{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}
