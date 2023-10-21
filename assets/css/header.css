@@ -1,0 +1,37 @@
+#header {
+  display: flex;
+  align-items: center;
+  height: 6vh;
+  background-color: #383899;
+  color: white;
+}
+
+#header img {
+  border-radius: 50%;
+}
+
+#header .h1 {
+  margin: 0rem;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+}
+
+#header #header-login {
+  position: absolute;
+  top: 1%;
+  left: 83%;
+  display: flex;
+  justify-content: space-around;
+  margin: 0rem;
+  width: 15%;
+  font-size: 1.2rem;
+}
+
+#header li {
+  list-style: none;
+}
+
+#header a {
+  color: white;
+  text-decoration: none;
+}

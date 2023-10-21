@@ -1,0 +1,23 @@
+body #for {
+  height: 100vh;
+  margin-top: 10%;
+}
+
+body #for input {
+  padding: .2rem;
+}
+
+body #for .btn {
+  color: black;
+  margin-right: .5rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  padding: .2rem;
+}
+
+body #for .btn:hover {
+  color: #e30606;
+  background-color: white;
+  border: 1px solid black;
+  text-decoration: none;
+}

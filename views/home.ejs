@@ -1,2 +1,157 @@
 
-        <h1>Slcode/<%=title%></h1>
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/chat_box.css">
+<h1 id="home">Slcode/<%=title%>
+</h1>
+<div id="home-container">
+
+        <section id="feed-post">
+                <% if(locals.user){%>
+                        <form action="/posts/create" method="post" id="new-post-form">
+                                <h2>Post</h2>
+                                <textarea name="content" cols="30" rows="5" placeholder="Type Content"></textarea>
+                                <input type="submit">
+                        </form>
+                        <%}%>
+                                <div id="posts-list-container">
+                                        <ol>
+                                                <% for (let post of list_post){%>
+                                                        <li id="post-<%=post._id%>">
+                                                                <p>
+                                                                        <%=post.content%>
+                                                                                <% if(locals.user
+                                                                                        &&locals.user.id==post.user.id){%>
+                                                                                        <small>
+                                                                                                <a class="delete-post-button"
+                                                                                                        href="/posts/destroy/<%= post.id %>">
+                                                                                                        <button>delete</button></a>
+                                                                                        </small>
+                                                                                        <%}%>
+                                                                                                <br>
+                                                                                                <small>
+                                                                                                        <%=
+                                                                                                                post.user.name%>
+                                                                                                </small>
+                                                                                                <br>
+                                                                                                <!-- Change Likes each Post  -->
+                                                                                                <small>
+                                                                                                        <% if (locals.user){
+                                                                                                                %>
+                                                                                                                <a class="toggle-like-button"
+                                                                                                                        data-likes="<%= post.likes.length %>"
+                                                                                                                        href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                                                                                                                        <%= post.likes.length
+                                                                                                                                %>
+                                                                                                                                Likes
+                                                                                                                </a>
+                                                                                                                <% }else{
+                                                                                                                        %>
+                                                                                                                        <%= post.likes.length
+                                                                                                                                %>
+                                                                                                                                Likes
+
+                                                                                                                                <% }
+                                                                                                                                        %>
+                                                                                                </small>
+                                                                </p>
+                                                                <div id="comment-page">
+                                                                        <% if(locals.user){%>
+                                                                                <form action="/comments/create"
+                                                                                        method="Post"
+                                                                                        id="new-comments-form">
+                                                                                        <input type="text"
+                                                                                                name="content"
+                                                                                                placeholder="Enter the Comments....."
+                                                                                                required>
+                                                                                        <input type="hidden" name="post"
+                                                                                                value="<%= post._id%>">
+                                                                                        <input type="submit"
+                                                                                                value="Add Comment">
+                                                                                </form>
+                                                                                <%}%>
+                                                                                        <div id="post-comments-list">
+                                                                                                <ol
+                                                                                                        id="post-commnets-<%= post._id%>">
+
+                                                                                                        <% for(comment
+                                                                                                                of
+                                                                                                                post.comments){%>
+                                                                                                                <%- include('comment')
+                                                                                                                        -%>
+                                                                                                                        <%}%>
+                                                                                                </ol>
+
+                                                                                        </div>
+                                                                </div>
+                                                        </li>
+
+
+                                                        <%}%>
+                                        </ol>
+                                </div>
+        </section>
+
+        <section id="user-friends">
+                <div id="freinds">
+                        <h1>Freinds</h1>
+                </div>
+                <div id="user">
+                        <h1>Users</h1>
+                        <% for(let u of all_users) {%>
+
+                                <p id="user-id">
+
+                                        <a href="/users/profile/<%= u.id%>">
+                                                <%= u.name%>
+                                        </a>
+
+                                </p>
+                                <%}%>
+
+                </div>
+        </section>
+        <!-- CHANGE :: Creat the code for chat box -->
+        <% if (locals.user){ %>
+                <div id="user-chat-box">
+                        <ul id="chat-messages-list">
+                                <li class="other-message">
+                                        <span>Other Message</span>
+                                </li>
+                                <li class="self-message">
+                                        <span>
+                                                Self Message
+                                        </span>
+                                </li>
+
+                        </ul>
+                        <div id="chat-message-input-container">
+                                <input id="chat-message-input" placeholder="Type message here">
+                                <button id="send-message">Send</button>
+                        </div>
+
+                </div>
+                <% } %>
+
+
+</div>
+
+<script src="/js/home_posts.js"></script>
+
+<!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
+<script src="/js/toggle_likes.js"></script>
+<script>
+        $('.toggle-like-button').each(function () {
+                let self = this;
+                let toggleLike = new ToggleLike(self);
+        });
+</script>
+</script>
+
+<!-- chat Engine script include js/cdn file -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+<% if (locals.user){ %>
+        <script>
+                new ChatEngine('user-chat-box', '<%= locals.user.email %>');
+        </script>
+        <% } %>

@@ -1,0 +1,7 @@
+<!-- <script src="/js/freinds.js"></script>
+<script>
+        $('.toggle-friendship-btn').each(function () {
+                let self = this;
+                console.log(self);
+                let toggleFriendship = new ToggleFriendship(self);
+        }); -->

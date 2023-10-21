@@ -1,0 +1,23 @@
+body{
+    #for{
+        height: 100vh;
+        margin-top: 10%;
+        input{
+            padding: .2rem;
+        }
+        .btn{
+            color: black;
+            margin-right: .5rem;
+            border-radius: 20px;
+            font-size: 1rem;
+            padding: .2rem;
+        }
+       .btn:hover{
+            color: rgb(227, 6, 6);
+            background-color: white;
+            border: 1px solid black;
+            text-decoration: none;
+        }
+
+    }
+}

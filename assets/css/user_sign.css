@@ -1,0 +1,29 @@
+#sign-in-page {
+  height: 100vh;
+}
+
+#sign-in-page .btn {
+  width: 30%;
+  background-color: black;
+  padding: .5rem;
+  border-radius: 20px;
+}
+
+#sign-in-page #button {
+  display: flex;
+  justify-content: center;
+  padding: .5rem;
+}
+
+#sign-in-page #button p a {
+  color: white;
+  margin-right: .5rem;
+  text-decoration: none;
+}
+
+#sign-in-page #button p a:hover {
+  color: #e30606;
+  background-color: white;
+  border: 1px solid black;
+  text-decoration: none;
+}
